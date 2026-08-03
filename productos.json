@@ -1,0 +1,34 @@
+[
+  {
+    "categoria": "tazas",
+    "nombre": "Taza Blanca 11 oz",
+    "descripcion": "Ideal para fotografías, frases y regalos personalizados.",
+    "precio": "25 Bs",
+    "imagen": "imagenes/taza1.jpg",
+    "etiqueta": "Más vendido"
+  },
+  {
+    "categoria": "tazas",
+    "nombre": "Taza Mágica",
+    "descripcion": "La imagen aparece al servir una bebida caliente.",
+    "precio": "45 Bs",
+    "imagen": "imagenes/taza2.jpg",
+    "etiqueta": "Nuevo"
+  },
+  {
+    "categoria": "poleras",
+    "nombre": "Polera Blanca",
+    "descripcion": "Polera personalizada de alta calidad.",
+    "precio": "Consultar",
+    "imagen": "imagenes/polera1.jpg",
+    "etiqueta": "Oferta"
+  },
+  {
+    "categoria": "gorras",
+    "nombre": "Gorra Personalizada",
+    "descripcion": "Ideal para empresas y eventos.",
+    "precio": "Consultar",
+    "imagen": "imagenes/gorra1.jpg",
+    "etiqueta": "Nuevo"
+  }
+]

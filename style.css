@@ -1,0 +1,1586 @@
+/*======================================
+    SUBLIMACIÓN ALEXANDRA
+======================================*/
+
+:root{
+
+    --dorado:#D4AF37;
+    --dorado2:#b89224;
+    --verde:#25D366;
+    --verde2:#128C7E;
+    --oscuro:#1f2937;
+    --gris:#6b7280;
+    --claro:#ffffff;
+    --fondo:#f5f5f5;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+    background:var(--fondo);
+    color:var(--oscuro);
+
+}
+
+/*=========================
+HEADER
+=========================*/
+
+header{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:85px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 60px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    z-index:999;
+
+}
+
+.logo{
+
+    font-size:40px;
+    font-weight:800;
+    color:var(--dorado);
+
+}
+
+nav{
+
+    display:flex;
+    gap:35px;
+
+}
+
+nav a{
+
+    text-decoration:none;
+    color:var(--oscuro);
+    font-weight:600;
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:var(--dorado);
+
+}
+
+.btn-whatsapp{
+
+    background:var(--verde);
+    color:white;
+    text-decoration:none;
+    padding:14px 30px;
+    border-radius:40px;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.btn-whatsapp:hover{
+
+    background:var(--verde2);
+
+}
+
+/*=========================
+BANNER
+=========================*/
+
+.banner{
+
+    margin-top:85px;
+    height:650px;
+    overflow:hidden;
+    position:relative;
+
+}
+
+.banner::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    z-index:2;
+
+}
+
+.slider{
+
+    width:100%;
+    height:100%;
+    position:relative;
+
+}
+
+.slide{
+
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:1s;
+
+}
+
+.slide.active{
+
+    opacity:1;
+
+}
+
+.slide img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+/*=========================
+SECCIONES
+=========================*/
+
+section{
+
+    padding:90px 8%;
+
+}
+
+.titulo{
+
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+.titulo h2{
+
+    font-size:48px;
+    margin-bottom:15px;
+
+}
+
+.titulo p{
+
+    max-width:800px;
+    margin:auto;
+    color:var(--gris);
+    font-size:18px;
+    line-height:1.8;
+
+}
+
+/*=========================
+PRODUCTOS
+=========================*/
+
+.productos{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:30px;
+    max-width:1320px;
+    margin:40px auto 0;
+}
+
+/*=========================
+TARJETA
+=========================*/
+
+.card{
+    width:100%;
+    max-width:300px;
+    margin:auto;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+}
+
+.card img{
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.card-info{
+
+    padding:25px;
+
+}
+
+.card h3{
+
+    margin-bottom:10px;
+
+    font-size:24px;
+
+}
+
+.card p{
+
+    color:var(--gris);
+
+    line-height:1.6;
+
+    min-height:70px;
+
+}
+
+.precio{
+
+    color:var(--dorado);
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin:20px 0;
+
+}
+
+.btn-comprar{
+
+    display:block;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    background:var(--verde);
+
+    color:white;
+
+    padding:14px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-comprar:hover{
+
+    background:var(--verde2);
+
+}
+
+/*=========================
+GALERÍA
+=========================*/
+
+/*======================================
+GALERÍA
+======================================*/
+
+.galeria{
+
+    max-width:1300px;
+    margin:50px auto 0;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+
+}
+
+.galeria img{
+
+    width:100%;
+    height:280px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.galeria img:hover{
+
+    transform:scale(1.06);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+
+}
+
+/*=========================
+CONTACTO
+=========================*/
+
+#contacto{
+
+    background:#202020;
+
+    color:white;
+
+    text-align:center;
+
+}
+
+.redes{
+
+    margin:30px 0;
+
+}
+
+.redes a{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    margin:10px;
+
+    font-size:30px;
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.redes a:nth-child(1){
+
+    background:#25D366;
+
+}
+
+.redes a:nth-child(2){
+
+    background:#1877F2;
+
+}
+
+.redes a:nth-child(3){
+
+    background:#000;
+
+}
+
+.redes a:hover{
+
+    transform:scale(1.1);
+
+}
+/*======================================
+TARJETA PREMIUM
+======================================*/
+
+.card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:60%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:.8s;
+
+}
+
+.card:hover::before{
+
+    left:160%;
+
+}
+
+.card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+
+}
+
+.card img{
+
+    width:100%;
+
+    transition:.5s;
+
+}
+
+.card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.etiqueta{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    background:#D4AF37;
+
+    color:#fff;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    z-index:10;
+
+}
+
+.card-info{
+
+    padding:20px;
+
+}
+
+.card-info h3{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+}
+
+.estrellas{
+
+    color:#FFC107;
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+.card-info p{
+
+    color:#666;
+
+    line-height:1.6;
+
+    min-height:70px;
+
+}
+
+.precio{
+
+    font-size:32px;
+
+    color:#D4AF37;
+
+    font-weight:bold;
+
+    margin:20px 0;
+
+}
+
+.botones{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.btn-ver{
+
+    flex:1;
+
+    background:#D4AF37;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    padding:12px;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+.btn-ver:hover{
+
+    background:#b89224;
+
+}
+
+.btn-comprar{
+
+    flex:1;
+
+    background:#25D366;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    padding:12px;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+.btn-comprar:hover{
+
+    background:#128C7E;
+
+}
+/*======================================
+LIGHTBOX GALERÍA
+======================================*/
+
+.lightbox{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.9);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:9999;
+
+}
+
+.lightbox.activo{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.lightbox img{
+
+    max-width:90%;
+
+    max-height:90%;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+
+}
+
+.cerrar{
+
+    position:absolute;
+
+    top:25px;
+
+    right:40px;
+
+    color:#fff;
+
+    font-size:45px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.cerrar:hover{
+
+    color:#D4AF37;
+
+}
+/*======================================
+MODAL PRODUCTO
+======================================*/
+
+.modal-producto{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.85);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:10000;
+
+}
+
+.modal-producto.activo{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+.modal-contenido{
+
+    width:90%;
+    max-width:900px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+
+    position:relative;
+
+}
+
+.modal-contenido img{
+
+    width:45%;
+    height:450px;
+
+    object-fit:cover;
+
+}
+
+.modal-info{
+
+    padding:35px;
+
+    flex:1;
+
+}
+
+.modal-info h2{
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+}
+
+.modal-info p{
+
+    color:#666;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.modalPrecio{
+
+    font-size:32px;
+
+    color:#D4AF37;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+}
+
+.cerrar-modal{
+
+    position:absolute;
+
+    top:15px;
+    right:25px;
+
+    font-size:38px;
+
+    cursor:pointer;
+
+}
+/*======================================
+FOOTER
+======================================*/
+
+.footer{
+
+    background:#181818;
+    color:#fff;
+
+    padding:70px 8% 20px;
+
+}
+
+.footer-contenedor{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+    max-width:1300px;
+
+    margin:auto;
+
+}
+
+.footer-col h3{
+
+    color:#D4AF37;
+
+    margin-bottom:20px;
+
+    font-size:24px;
+
+}
+
+.footer-col p{
+
+    color:#ccc;
+
+    line-height:1.8;
+
+    margin-bottom:12px;
+
+}
+
+.footer-col i{
+
+    color:#D4AF37;
+
+    margin-right:10px;
+
+}
+
+.redes-footer{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.redes-footer a{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#2d2d2d;
+
+    color:#fff;
+
+    font-size:22px;
+
+    transition:.3s;
+
+}
+
+.redes-footer a:hover{
+
+    background:#D4AF37;
+
+    transform:translateY(-5px);
+
+}
+
+.footer-copy{
+
+    margin-top:50px;
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    padding-top:20px;
+
+    text-align:center;
+
+    color:#aaa;
+
+}
+@media(max-width:900px){
+
+    .footer-contenedor{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .footer-contenedor{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .redes-footer{
+
+        justify-content:center;
+
+    }
+
+}
+/*======================================
+MENU RESPONSIVE
+======================================*/
+
+.menu-toggle{
+
+    display:none;
+
+    font-size:32px;
+
+    cursor:pointer;
+
+    color:#D4AF37;
+
+}
+
+@media(max-width:900px){
+
+    header{
+
+        padding:20px;
+
+    }
+
+    .menu-toggle{
+
+        display:block;
+
+        z-index:1001;
+
+    }
+
+    nav{
+
+        position:fixed;
+
+        top:85px;
+
+        left:-100%;
+
+        width:100%;
+
+        background:#fff;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:25px;
+
+        padding:40px 0;
+
+        transition:.35s;
+
+        box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+    }
+
+    nav.activo{
+
+        left:0;
+
+    }
+
+    .btn-whatsapp{
+
+        display:none;
+
+    }
+
+}
+/*======================================
+RESPONSIVE PRODUCTOS
+======================================*/
+
+@media(max-width:1100px){
+
+    .productos{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .productos{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+@media(max-width:900px){
+
+    .banner{
+
+        height:350px;
+
+    }
+
+}
+@media(max-width:900px){
+
+    .galeria{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .galeria{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/*======================================
+BOTÓN WHATSAPP FLOTANTE
+======================================*/
+
+.whatsapp-float{
+
+    position:fixed;
+
+    bottom:25px;
+
+    right:25px;
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+    text-decoration:none;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+    z-index:999;
+
+    animation:latido 1.8s infinite;
+
+    transition:.3s;
+
+}
+
+.whatsapp-float:hover{
+
+    transform:scale(1.1);
+
+    background:#128C7E;
+
+}
+
+@keyframes latido{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.12);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+/*======================================
+BANNER PRINCIPAL
+======================================*/
+
+.banner-contenido{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:5;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    color:#fff;
+
+    padding:20px;
+
+}
+
+.banner-contenido h1{
+
+    font-size:72px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+    text-shadow:0 5px 20px rgba(0,0,0,.5);
+
+}
+
+.banner-contenido p{
+
+    font-size:24px;
+
+    max-width:700px;
+
+    line-height:1.7;
+
+    margin-bottom:40px;
+
+    text-shadow:0 5px 20px rgba(0,0,0,.5);
+
+}
+
+.banner-botones{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+.btn-banner{
+
+    background:#D4AF37;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    padding:16px 35px;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-banner:hover{
+
+    transform:translateY(-5px);
+
+    background:#b89224;
+
+}
+
+.btn-banner-whatsapp{
+
+    background:#25D366;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    padding:16px 35px;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-banner-whatsapp:hover{
+
+    background:#128C7E;
+
+    transform:translateY(-5px);
+
+}
+@media(max-width:900px){
+
+    .banner-contenido h1{
+
+        font-size:42px;
+
+    }
+
+    .banner-contenido p{
+
+        font-size:18px;
+
+    }
+
+}
+/*======================================
+BENEFICIOS
+======================================*/
+
+#beneficios{
+
+    background:#fff;
+
+}
+
+.beneficios{
+
+    max-width:1300px;
+
+    margin:50px auto 0;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.beneficio{
+
+    background:#fff;
+
+    padding:35px 25px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.beneficio:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+.beneficio i{
+
+    font-size:55px;
+
+    color:#D4AF37;
+
+    margin-bottom:20px;
+
+}
+
+.beneficio h3{
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+}
+
+.beneficio p{
+
+    color:#666;
+
+    line-height:1.7;
+
+}
+/*======================================
+TESTIMONIOS
+======================================*/
+
+#testimonios{
+
+    background:#f8f8f8;
+
+}
+
+.testimonios{
+
+    max-width:1300px;
+
+    margin:50px auto 0;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+.testimonio{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.testimonio:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+}
+
+.testimonio img{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin-bottom:20px;
+
+    border:4px solid #D4AF37;
+
+}
+
+.testimonio h3{
+
+    margin-bottom:10px;
+
+}
+
+.testimonio .estrellas{
+
+    color:#FFC107;
+
+    font-size:20px;
+
+    margin-bottom:15px;
+
+}
+
+.testimonio p{
+
+    color:#666;
+
+    line-height:1.8;
+
+    font-style:italic;
+
+}
+@media(max-width:900px){
+
+    .testimonios{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/*======================================
+ESTADÍSTICAS
+======================================*/
+
+#estadisticas{
+
+    background:linear-gradient(135deg,#D4AF37,#b89224);
+
+    color:#fff;
+
+    padding:80px 8%;
+
+}
+
+.estadisticas-contenedor{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.estadistica{
+
+    text-align:center;
+
+}
+
+.estadistica i{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+}
+
+.estadistica h2{
+
+    font-size:52px;
+
+    margin-bottom:10px;
+
+    font-weight:800;
+
+}
+
+.estadistica p{
+
+    font-size:18px;
+
+}
+@media(max-width:900px){
+
+    .estadisticas-contenedor{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .estadisticas-contenedor{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+.btn-ver,
+.btn-comprar{
+
+    transition:.35s;
+
+}
+
+.btn-ver:hover,
+.btn-comprar:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+
+}
+.titulo h2{
+
+    position:relative;
+
+    display:inline-block;
+
+    padding-bottom:15px;
+
+}
+
+.titulo h2::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:0;
+
+    width:80px;
+
+    height:4px;
+
+    background:#D4AF37;
+
+    border-radius:20px;
+
+}
+.animar{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:.8s;
+
+}
+
+.animar.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+::selection{
+
+    background:#D4AF37;
+
+    color:white;
+
+}
