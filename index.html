@@ -1168,6 +1168,158 @@ colegios y eventos.
 
 </a>
 
+<!-- POPUP PROMOCIONAL GORRA CUEVO -->
+
+<style>
+
+.popup-promocion {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s ease;
+}
+
+.popup-promocion.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-contenido {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    max-height: 92vh;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    transform: scale(0.85);
+    transition: 0.4s ease;
+}
+
+.popup-promocion.activo .popup-contenido {
+    transform: scale(1);
+}
+
+.popup-contenido img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 92vh;
+    object-fit: contain;
+}
+
+.popup-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.popup-cerrar:hover {
+    background: #D4AF37;
+    transform: scale(1.1);
+}
+
+.popup-enlace {
+    display: block;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+
+    .popup-promocion {
+        padding: 12px;
+    }
+
+    .popup-contenido {
+        max-width: 95%;
+        border-radius: 15px;
+    }
+
+    .popup-cerrar {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        font-size: 24px;
+        top: 8px;
+        right: 8px;
+    }
+
+}
+
+</style>
+
+
+<div class="popup-promocion" id="popupPromocion">
+
+    <div class="popup-contenido">
+
+        <button class="popup-cerrar" id="cerrarPopup">
+            &times;
+        </button>
+
+        <a
+            class="popup-enlace"
+            href="https://wa.me/59178448039?text=Hola%20Sublimación%20Alexandra,%20quiero%20consultar%20por%20la%20gorra%20en%20oferta%20por%2030%20Bs."
+            target="_blank"
+        >
+
+            <img
+                src="promocion-gorra-cuevo.jpg"
+                alt="Promoción Gorra por 30 Bs - Aniversario de Cuevo"
+            >
+
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const popup = document.getElementById("popupPromocion");
+    const cerrar = document.getElementById("cerrarPopup");
+
+    setTimeout(function() {
+        popup.classList.add("activo");
+    }, 700);
+
+    cerrar.addEventListener("click", function() {
+        popup.classList.remove("activo");
+    });
+
+    popup.addEventListener("click", function(e) {
+
+        if (e.target === popup) {
+            popup.classList.remove("activo");
+        }
+
+    });
+
+});
+
+</script>
+    
 </body>
 
 </html>
