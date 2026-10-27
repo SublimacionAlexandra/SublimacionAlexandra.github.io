@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sublimacionalexandra.github.io/sitemap.xml
