@@ -44,6 +44,7 @@
 html{
   scroll-behavior:smooth;
   scroll-padding-top:calc(var(--header-h) + 20px);
+  scrollbar-gutter:stable;
   -webkit-text-size-adjust:100%;
 }
 
@@ -471,8 +472,10 @@ section{
   opacity:.92;
 }
 
-.estadistica h2{
+.estadistica .cifra{
   font-size:clamp(1.9rem,3.6vw,2.6rem);
+  font-weight:800;
+  line-height:1.15;
   color:var(--blanco);
   margin-bottom:6px;
 }
@@ -953,28 +956,60 @@ section{
   width:100%;
   max-width:880px;
   max-height:90vh;
+  max-height:90dvh;
   background:var(--blanco);
   border-radius:var(--radio);
   overflow:hidden;
   box-shadow:0 28px 70px rgba(0,0,0,.4);
+  overscroll-behavior:contain;
 }
 
-.modal-contenido > img{
+.modal-producto.activo .modal-contenido{
+  animation:modalEntrada .28s ease both;
+}
+
+@keyframes modalEntrada{
+
+  from{
+    opacity:0;
+    transform:translateY(18px) scale(.98);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+
+}
+
+.modal-visual{
   width:46%;
-  height:auto;
-  min-height:100%;
-  object-fit:contain;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   padding:22px;
   background:#fbfaf7;
+  border-right:1px solid rgba(16,24,40,.06);
+}
+
+.modal-visual img{
+  width:100%;
+  height:auto;
+  max-height:60vh;
+  max-height:60dvh;
+  object-fit:contain;
 }
 
 .modal-info{
   flex:1;
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:12px;
   padding:clamp(24px,3.4vw,40px);
   overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
 }
 
 .modal-info h2{
@@ -986,10 +1021,75 @@ section{
   font-size:.96rem;
 }
 
-.modal-info .btn-comprar{
-  flex:0 0 auto;
+.modal-categoria{
+  align-self:flex-start;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--dorado-texto);
+  background:rgba(212,175,55,.16);
+  padding:5px 12px;
+  border-radius:999px;
+}
+
+.modal-detalles{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  padding:14px 0;
+  border-top:1px solid rgba(16,24,40,.08);
+  border-bottom:1px solid rgba(16,24,40,.08);
+}
+
+.modal-detalles li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:.87rem;
+  color:var(--gris);
+}
+
+.modal-detalles i{
+  color:var(--dorado-texto);
+  width:18px;
+  flex-shrink:0;
+  margin-top:2px;
+  text-align:center;
+}
+
+.modal-acciones{
+  display:flex;
+  gap:10px;
   margin-top:auto;
+  padding-top:6px;
+}
+
+.modal-acciones .btn-comprar{
+  flex:1;
   padding:14px 18px;
+}
+
+.btn-compartir{
+  flex:0 0 auto;
+  width:50px;
+  border:1px solid rgba(16,24,40,.12);
+  border-radius:999px;
+  background:var(--blanco);
+  color:var(--tinta);
+  font-size:1rem;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background var(--transicion), border-color var(--transicion), transform var(--transicion);
+}
+
+.btn-compartir:hover{
+  background:var(--fondo);
+  border-color:var(--dorado);
+  transform:translateY(-2px);
 }
 
 .modal-cerrar{
@@ -1237,21 +1337,66 @@ section{
 
 @media (max-width:768px){
 
-  .modal-contenido{
-    flex-direction:column;
-    max-height:92vh;
+  .modal-producto{
+    align-items:flex-end;
+    padding:0;
   }
 
-  .modal-contenido > img{
+  .modal-contenido{
+    flex-direction:column;
     width:100%;
-    min-height:0;
-    height:230px;
-    padding:14px;
+    max-height:92vh;
+    max-height:92dvh;
+    border-radius:22px 22px 0 0;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+
+  .modal-producto.activo .modal-contenido{
+    animation:hojaEntrada .3s ease both;
+  }
+
+  .modal-contenido::before{
+    content:"";
+    position:absolute;
+    top:8px;
+    left:50%;
+    transform:translateX(-50%);
+    width:44px;
+    height:4px;
+    border-radius:999px;
+    background:rgba(16,24,40,.18);
+    z-index:6;
+  }
+
+  .modal-visual{
+    width:100%;
+    padding:24px 16px 10px;
+    border-right:0;
     border-bottom:1px solid rgba(16,24,40,.06);
   }
 
+  .modal-visual img{
+    height:30vh;
+    height:30dvh;
+    max-height:240px;
+    width:auto;
+    max-width:100%;
+  }
+
   .modal-info{
-    padding:22px;
+    padding:20px 20px 18px;
+  }
+
+  @keyframes hojaEntrada{
+
+    from{
+      transform:translateY(100%);
+    }
+
+    to{
+      transform:translateY(0);
+    }
+
   }
 
   .banner{
@@ -1323,3 +1468,354 @@ section{
 
 }
 
+/* ============================================================
+   PWA · banner de instalación
+   ============================================================ */
+
+.instalar{
+  position:fixed;
+  left:50%;
+  bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  transform:translate(-50%,140%);
+  z-index:950;
+  width:min(560px,calc(100% - 24px));
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
+  border-radius:18px;
+  background:rgba(20,22,26,.96);
+  color:var(--blanco);
+  box-shadow:0 18px 48px rgba(0,0,0,.38);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(212,175,55,.28);
+  opacity:0;
+  visibility:hidden;
+  transition:transform .42s cubic-bezier(.2,.9,.25,1), opacity .3s ease, visibility .3s;
+}
+
+.instalar.visible{
+  transform:translate(-50%,0);
+  opacity:1;
+  visibility:visible;
+}
+
+.instalar[hidden]{
+  display:none;
+}
+
+.instalar-icono{
+  flex-shrink:0;
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  overflow:hidden;
+  background:var(--dorado);
+}
+
+.instalar-icono img{
+  width:46px;
+  height:46px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.instalar-texto{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+
+.instalar-texto strong{
+  font-size:.95rem;
+  font-weight:700;
+  line-height:1.25;
+}
+
+.instalar-texto span{
+  font-size:.8rem;
+  color:#b8c0cc;
+  line-height:1.35;
+}
+
+.instalar-acciones{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-left:auto;
+  flex-shrink:0;
+}
+
+.instalar-btn{
+  border:0;
+  border-radius:999px;
+  padding:10px 18px;
+  background:var(--dorado);
+  color:#241c00;
+  font-family:inherit;
+  font-size:.85rem;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background var(--transicion), transform var(--transicion);
+}
+
+.instalar-btn:hover{
+  background:var(--dorado-oscuro);
+  transform:translateY(-2px);
+}
+
+.instalar-cerrar{
+  border:0;
+  background:rgba(255,255,255,.1);
+  color:var(--blanco);
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  font-size:1.2rem;
+  line-height:1;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background var(--transicion);
+}
+
+.instalar-cerrar:hover{
+  background:rgba(255,255,255,.22);
+}
+
+@media (min-width:769px){
+
+  .instalar{
+    bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  }
+
+}
+
+/* Móvil: el banner pasa a dos líneas para que quepa el texto */
+@media (max-width:600px){
+
+  .instalar{
+    flex-wrap:wrap;
+    padding:13px 14px;
+    gap:10px 12px;
+    border-radius:16px;
+  }
+
+  .instalar-icono,
+  .instalar-icono img{
+    width:40px;
+    height:40px;
+    border-radius:10px;
+  }
+
+  .instalar-texto{
+    flex:1 1 60%;
+  }
+
+  .instalar-texto strong{
+    font-size:.9rem;
+  }
+
+  .instalar-texto span{
+    font-size:.78rem;
+  }
+
+  .instalar-acciones{
+    width:100%;
+    margin-left:0;
+    justify-content:flex-end;
+  }
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+  .instalar,
+  .modal-contenido{
+    transition:none;
+    animation:none;
+  }
+
+}
+
+/* ============================================================
+   Detalles táctiles y de estabilidad
+   ============================================================ */
+
+button,
+.btn-ver,
+.btn-comprar,
+.btn-dorado,
+.btn-verde,
+.btn-whatsapp,
+.instalar-btn,
+.instalar-cerrar,
+.modal-cerrar,
+.lightbox-cerrar,
+.popup-cerrar,
+.volver-arriba,
+.whatsapp-float{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.card{
+  cursor:pointer;
+}
+
+.card .btn-comprar,
+.card .btn-ver{
+  cursor:pointer;
+}
+
+.lightbox,
+.popup-promocion{
+  height:100vh;
+  height:100dvh;
+  overscroll-behavior:contain;
+}
+
+/* Pantallas muy angostas (iPhone SE, 320 px) */
+@media (max-width:360px){
+
+  .titulo h2{
+    font-size:1.45rem;
+  }
+
+  .banner-contenido h1{
+    font-size:1.7rem;
+  }
+
+  .card-info h3{
+    font-size:1rem;
+  }
+
+  .btn-ver,
+  .btn-comprar{
+    font-size:.85rem;
+    padding:11px 8px;
+  }
+
+  .datos span,
+  .datos strong{
+    font-size:.85rem;
+  }
+
+}
+
+/* Móvil en horizontal: el banner no debe comerse la pantalla */
+@media (max-height:540px) and (orientation:landscape){
+
+  .banner{
+    min-height:0;
+    height:auto;
+  }
+
+  .banner-contenido{
+    padding:76px 20px 56px;
+  }
+
+  .banner-contenido h1{
+    font-size:1.8rem;
+  }
+
+  .banner-texto,
+  .banner-chips{
+    display:none;
+  }
+
+  .modal-producto{
+    align-items:center;
+    padding:12px;
+  }
+
+  .modal-contenido{
+    flex-direction:row;
+    max-height:86vh;
+    max-height:86dvh;
+    border-radius:var(--radio);
+  }
+
+  .modal-visual{
+    width:42%;
+    border-right:1px solid rgba(16,24,40,.06);
+    border-bottom:0;
+  }
+
+  .modal-visual img{
+    height:auto;
+    max-height:60vh;
+    max-height:60dvh;
+  }
+
+}
+
+/* Impresión: la página limpia, sin botones flotantes */
+@media print{
+
+  header,
+  .whatsapp-float,
+  .volver-arriba,
+  .instalar,
+  .popup-promocion,
+  .banner-botones,
+  .botones{
+    display:none !important;
+  }
+
+  .banner{
+    height:auto;
+    margin-top:0;
+  }
+
+  body{
+    background:#fff;
+  }
+
+}
+
+
+
+/* ============================================================
+   Zonas seguras (iPhone con notch) y convivencia de flotantes
+   ============================================================ */
+
+.whatsapp-float{
+  right:calc(20px + env(safe-area-inset-right,0px));
+  bottom:calc(20px + env(safe-area-inset-bottom,0px));
+}
+
+.volver-arriba{
+  right:calc(22px + env(safe-area-inset-right,0px));
+  bottom:calc(90px + env(safe-area-inset-bottom,0px));
+}
+
+@media (max-width:520px){
+
+  .whatsapp-float{
+    right:calc(16px + env(safe-area-inset-right,0px));
+    bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  }
+
+  .volver-arriba{
+    right:calc(18px + env(safe-area-inset-right,0px));
+    bottom:calc(82px + env(safe-area-inset-bottom,0px));
+  }
+
+}
+
+/* Cuando el banner de instalación está visible, los flotantes suben */
+@media (max-width:600px){
+
+  body.con-instalar .whatsapp-float{
+    bottom:calc(152px + env(safe-area-inset-bottom,0px));
+  }
+
+  body.con-instalar .volver-arriba{
+    bottom:calc(216px + env(safe-area-inset-bottom,0px));
+  }
+
+}

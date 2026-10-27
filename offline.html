@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sin conexión · Sublimación Alexandra</title>
+<meta name="theme-color" content="#D4AF37">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="robots" content="noindex">
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    min-height:100vh;min-height:100dvh;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    font-family:'Poppins','Segoe UI',Arial,sans-serif;
+    background:#f6f5f2;color:#1f2937;text-align:center;
+  }
+  .caja{
+    max-width:420px;width:100%;
+    background:#fff;border-radius:20px;
+    padding:40px 28px;
+    box-shadow:0 18px 48px rgba(16,24,40,.12);
+  }
+  .marca{
+    width:64px;height:64px;margin:0 auto 22px;
+    border-radius:16px;
+    background:linear-gradient(180deg,#E3C158,#C39F2E);
+    color:#1f2937;font-weight:800;font-size:26px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  h1{font-size:1.4rem;margin-bottom:12px}
+  p{color:#5b6472;line-height:1.7;font-size:.95rem;margin-bottom:26px}
+  .boton{
+    display:inline-block;width:100%;
+    padding:14px 20px;border:0;border-radius:999px;
+    background:#D4AF37;color:#241c00;
+    font-family:inherit;font-size:1rem;font-weight:700;
+    cursor:pointer;text-decoration:none;
+  }
+  .boton:hover{background:#b89224}
+  .secundario{
+    display:block;margin-top:14px;
+    color:#0f7f70;font-size:.9rem;font-weight:600;text-decoration:none;
+  }
+  .nota{margin-top:24px;font-size:.8rem;color:#8b93a0}
+</style>
+
+</head>
+
+<body>
+
+<div class="caja">
+
+  <div class="marca" aria-hidden="true">SA</div>
+
+  <h1>Estás sin conexión</h1>
+
+  <p>
+    No pudimos cargar la página porque no hay internet en este momento.
+    Vuelve a intentarlo cuando tengas señal.
+  </p>
+
+  <button class="boton" type="button" onclick="location.reload()">
+    Reintentar
+  </button>
+
+  <a class="secundario" href="./">Ir al inicio</a>
+
+  <p class="nota">
+    También puedes escribirnos por WhatsApp al +591 78448039
+  </p>
+
+</div>
+
+</body>
+
+</html>

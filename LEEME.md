@@ -1,28 +1,40 @@
-# Sublimación Alexandra — sitio corregido
+# Sublimación Alexandra — sitio corregido + PWA
 
-Esta carpeta contiene el sitio listo para subir a GitHub Pages, con las correcciones
-aplicadas y la sección de testimonios reemplazada por una de **ubicación con mapa**.
+Sitio listo para subir a GitHub Pages. Incluye:
+correcciones, sección de **ubicación con mapa** (reemplaza los testimonios),
+**PWA instalable**, íconos de todos los tamaños (incluido maskable) y
+**vista previa del producto** al tocar cualquier tarjeta.
 
 ---
 
 ## 1. Qué hay en la carpeta
 
+### Archivos del sitio (raíz del repositorio)
+
 | Archivo | Estado | Para qué sirve |
 |---|---|---|
-| `index.html` | **reemplaza** al actual | Página completa corregida |
-| `style.css` | **reemplaza** al actual | Estilos depurados (sin duplicados) |
-| `script.js` | **reemplaza** al actual | Un solo archivo, sin doble carga |
-| `og-image.jpg` | **nuevo** | Imagen que sale al compartir el link por WhatsApp/Facebook |
-| `favicon.svg` | **nuevo** | Ícono de la pestaña del navegador |
+| `index.html` | **reemplaza** | Página completa |
+| `style.css` | **reemplaza** | Estilos depurados |
+| `script.js` | **reemplaza** | Menú, modal, carrusel, PWA |
+| `manifest.webmanifest` | **nuevo** | Ficha de la app (nombre, íconos, colores) |
+| `sw.js` | **nuevo** | Service worker: permite abrirla sin internet |
+| `offline.html` | **nuevo** | Pantalla que se muestra si no hay conexión |
+| `og-image.jpg` | **nuevo** | Tarjeta al compartir el link |
+| `favicon.svg` | **nuevo** | Ícono de la pestaña |
 | `favicon-32.png` | **nuevo** | Ícono de respaldo |
-| `apple-touch-icon.png` | **nuevo** | Ícono al guardar en el celular |
-| `icon-512.png` | **nuevo** | Ícono grande (datos para Google) |
-| `robots.txt` | **nuevo** | Permite que Google indexe el sitio |
+| `apple-touch-icon.png` | **nuevo** | Ícono al añadir a inicio en iPhone |
+| `robots.txt` | **nuevo** | Permite que Google indexe |
 | `sitemap.xml` | **nuevo** | Mapa del sitio para Google |
 
-Todos van en la **raíz del repositorio**, junto a `index.html`. Las carpetas de
-imágenes (`imagenes/`, `tazas/`, `poleras/`, `gorras/`, `productos/`, `galeria/`)
-se quedan tal como están: el nuevo HTML usa los mismos nombres de archivo.
+### Carpeta `icons/` (nueva)
+
+10 archivos: `icon-72`, `96`, `128`, `144`, `152`, `192`, `384`, `512`
+y `maskable-192`, `maskable-512`.
+
+> Sube la carpeta `icons/` **completa**, con ese nombre exacto.
+> Si ya habías subido un `icon-512.png` suelto en la raíz, bórralo: ahora la ruta es `icons/icon-512.png`.
+
+Total: **12 archivos + 1 carpeta**.
 
 ---
 
@@ -30,92 +42,100 @@ se quedan tal como están: el nuevo HTML usa los mismos nombres de archivo.
 
 | Archivo / carpeta | Por qué |
 |---|---|
-| `productos.json` | No lo usa ninguna página y sus rutas están mal escritas |
-| `galeria/WhatsApp Image 2026-08-02 at 18.40.30 (3).jpeg` | Foto suelta, no se usa, y el nombre con espacios da problemas |
-| `clientes/` (carpeta completa) | Ya no hay sección de testimonios; son fotos de personas reales, mejor no dejarlas publicadas |
+| `productos.json` | Ninguna página lo usa y sus rutas están mal |
+| `galeria/WhatsApp Image 2026-08-02 at 18.40.30 (3).jpeg` | Foto suelta, nombre con espacios |
+| `clientes/` (carpeta) | Ya no hay testimonios y son fotos de personas reales |
+| `icon-512.png` (si quedó en la raíz) | Se reemplazó por `icons/icon-512.png` |
 
 ---
 
-## 3. Cómo subirlo a GitHub (desde el navegador)
+## 3. Cómo subirlo a GitHub
 
 1. Entra a `github.com/SublimacionAlexandra/SublimacionAlexandra.github.io`
-2. Botón **Add file → Upload files**
-3. Arrastra **todos los archivos de esta carpeta** (no la carpeta, los archivos)
-4. Escribe el mensaje `Sitio corregido + mapa de ubicación`
-5. Botón verde **Commit changes**
-6. Espera 1–2 minutos y abre `https://sublimacionalexandra.github.io/`
+2. **Add file → Upload files**
+3. Arrastra los 12 archivos **y la carpeta `icons/`**
+4. Mensaje: `PWA + mapa + modal de producto`
+5. **Commit changes** y espera 1–2 minutos
 
-Los archivos con el mismo nombre se reemplazan solos. Si el navegador no te deja
-arrastrar, usa **GitHub Desktop**: copia los archivos en la carpeta local del
-repositorio, y luego *Commit* + *Push*.
+> Para subir la carpeta: arrástrala tal cual. GitHub conserva la ruta `icons/…`.
+> Si no te deja, crea la carpeta con **Add file → Create new file** escribiendo
+> `icons/icon-192.png`… pero es más fácil arrastrarla.
 
-> Consejo: recarga con **Ctrl + Shift + R** para ver los cambios y no la versión
-> guardada en caché.
+**Importante:** en el mismo commit deben ir `index.html` y `sw.js`. Si subes el
+`sw.js` y el navegador guarda una versión vieja del sitio, fuerza la recarga con
+**Ctrl + Shift + R** o borra los datos del sitio.
 
 ---
 
-## 4. Lo que tienes que personalizar sí o sí
+## 4. Cómo probar la PWA
+
+1. Abre el sitio en **Chrome para Android** (o Chrome/Edge en PC).
+2. A los pocos segundos aparece el **banner de instalación** abajo.
+3. Toca **Instalar** → queda como app, con ícono propio.
+4. En **iPhone** el banner explica: *Compartir → Añadir a pantalla de inicio*
+   (Safari no permite instalación automática).
+5. Para comprobar que funciona sin internet: abre la app, activa **modo avión**
+   y vuelve a entrar. Debe cargar desde caché.
+
+### Si actualizas el sitio y no ves los cambios
+El service worker guarda una copia. Sube el cambio y **sube también la versión**:
+en `sw.js` cambia la primera línea
+`var VERSION = 'v2.0.0';` → `'v2.0.1'`. Eso borra la caché vieja sola.
+
+---
+
+## 5. Lo que tienes que personalizar sí o sí
 
 ### a) El mapa con tu dirección exacta
-Ahora el mapa apunta al centro de Cuevo. Para que marque tu tienda:
+Ahora apunta al centro de Cuevo. En `index.html` busca `maps.google.com/maps?q=`,
+reemplaza `Cuevo%2C%20Santa%20Cruz%2C%20Bolivia` por tus coordenadas
+(ej. `-20.4512,-63.5231`, se copian con clic derecho en Google Maps) y haz lo mismo
+en el botón "Cómo llegar" (`destination=`).
 
-1. Abre Google Maps y busca tu dirección exacta.
-2. Clic derecho sobre el punto → copia las coordenadas (ej. `-20.4512,-63.5231`).
-3. En `index.html` busca `maps.google.com/maps?q=` y reemplaza
-   `Cuevo%2C%20Santa%20Cruz%2C%20Bolivia` por `-20.4512,-63.5231` (tus coordenadas).
-4. En el botón "Cómo llegar" cambia también `destination=...` por las mismas coordenadas.
-
-### b) Los precios que dicen "Precio a consultar"
-Están en poleras, gorras y más productos. Si prefieres mostrar "Desde 45 Bs" en
-lugar de "Precio a consultar", busca en `index.html` la línea:
-
+### b) Los precios "a consultar"
 ```html
 <div class="precio consultar">Precio a consultar</div>
 ```
-
-y cámbiala por:
-
+cámbialo por:
 ```html
 <div class="precio">Desde 45 Bs</div>
 ```
 
-(quitando la palabra `consultar` para que se vea en dorado y grande).
+### c) Las estadísticas
+`1.500` productos, `850` clientes y `9` departamentos venían del sitio anterior.
+Si no son reales, corrígelos.
 
-### c) Los números de las estadísticas
-`1.500` productos, `850` clientes y `9` departamentos estaban en el sitio anterior.
-Revísalos: si no son reales, cámbialos, porque hoy la gente los lee.
-
-### d) Redes sociales
-Los enlaces de Facebook y TikTok se mantuvieron igual. Verifica que abran bien.
+### d) Los enlaces de Facebook y TikTok
+Están igual que antes; verifica que abran bien.
 
 ---
 
-## 5. Lo más importante que queda pendiente: el peso de las imágenes
+## 6. Lo más importante que queda pendiente: el peso de las imágenes
 
-El código ya carga las imágenes con `loading="lazy"`, pero **los archivos siguen
-pesando lo mismo**: unos 4,9 MB en total. Eso en datos móviles sigue siendo lento.
+El código ya usa `loading="lazy"`, pero los archivos pesan lo mismo: **~4,9 MB**.
+Ahora, además, el service worker las guarda en caché, así que la primera visita
+sigue siendo la más lenta.
 
-| Imagen | Peso actual | Bajar a |
+| Imagen | Peso | Bajar a |
 |---|---|---|
 | `imagenes/banner1.jpg` | 414 KB | ~110 KB |
 | `imagenes/banner2.jpg` | 510 KB | ~110 KB |
 | `imagenes/banner3.jpg` | 554 KB | ~110 KB |
 | `promocion-gorra-cuevo.jpg` | 734 KB | ~150 KB |
 | `galeria/trabajo6.jpg` | 353 KB | ~120 KB |
-| `gorras/gorra3.jpg` | **4 KB** | reemplazar: se ve borrosa |
-| `tazas/taza2.jpg` | **8 KB** | reemplazar: se ve borrosa |
+| `gorras/gorra3.jpg` | **4 KB** | reemplazar (borrosa) |
+| `tazas/taza2.jpg` | **8 KB** | reemplazar (borrosa) |
 
-**Cómo hacerlo gratis y sin programas:** entra a `squoosh.app`, arrastra la foto,
-elige *Resize* a 1600 px de ancho, formato **WebP** con calidad 80, descarga y sube
-el archivo con el mismo nombre. Si quieres que quede en JPG, usa calidad 80 igual.
+**Gratis y sin instalar nada:** `squoosh.app` → arrastra la foto → *Resize* 1600 px
+→ WebP calidad 80 (o JPG 80) → descarga → súbela con el mismo nombre.
 
 ---
 
-## 6. Si un día quieres dar el siguiente paso
+## 7. Siguiente paso recomendado
 
-- Un **dominio propio** (`sublimacionalexandra.com`) en lugar de `github.io`:
-  se configura en *Settings → Pages → Custom domain* y da mucha más confianza.
-- **Google Business Profile**: es lo que hace que aparezcas en el mapa de Google
-  cuando alguien busca "sublimación Cuevo". Es gratis y es la mejora con más
-  impacto después de esto.
+- **Google Business Profile**: es lo que te hace aparecer en el mapa de Google
+  cuando alguien busca "sublimación Cuevo". Gratis y de alto impacto.
 - **Google Search Console**: para ver con qué palabras te encuentran.
+- **Dominio propio** (`sublimacionalexandra.com`) en lugar de `github.io`.
+  Ojo: si cambias de dominio, actualiza `canonical`, `og:url`, `sitemap.xml`
+  y las URLs de los datos estructurados.
