@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-barra="v1">
 
 <head>
 
@@ -26,7 +26,7 @@
 <meta property="og:image:alt" content="Sublimación Alexandra: tazas, poleras, gorras y regalos personalizados">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sublimación Alexandra | Regalos personalizados en Bolivia">
-<meta name="twitter:description" content="Tazas desde 25 Bs, poleras, gorras y regalos personalizados. Envíos a todo Bolivia.">
+<meta name="twitter:description" content="Tazas desde 30 Bs, poleras, gorras y regalos personalizados. Envíos a todo Bolivia.">
 <meta name="twitter:image" content="https://sublimacionalexandra.github.io/og-image.jpg">
 
 <!-- Aplicación instalable (PWA) -->
@@ -117,7 +117,7 @@
         "description": "Taza blanca de 11 oz sublimada con fotografías, nombres, frases o logotipos.",
         "offers": {
           "@type": "Offer",
-          "price": "25",
+          "price": "30",
           "priceCurrency": "BOB",
           "availability": "https://schema.org/InStock"
         }
@@ -130,7 +130,7 @@
         "@type": "Product",
         "name": "Taza Mágica Roja 11 oz",
         "image": "https://sublimacionalexandra.github.io/tazas/taza2.jpg",
-        "description": "La imagen aparece al servir una bebida caliente. Taza mágica con su cajita 60 Bs, sin la cajita 50 Bs.",
+        "description": "La imagen aparece al servir una bebida caliente. Tu compra incluye diseño personalizado.",
         "offers": {
           "@type": "Offer",
           "price": "50",
@@ -178,7 +178,7 @@
         "@type": "Product",
         "name": "Taza Mágica Negra 11 oz",
         "image": "https://sublimacionalexandra.github.io/tazas/taza-magica-negra.jpg",
-        "description": "La imagen aparece al servir una bebida caliente. Taza mágica con su cajita 60 Bs, sin la cajita 50 Bs.",
+        "description": "La imagen aparece al servir una bebida caliente. Tu compra incluye diseño personalizado.",
         "offers": {
           "@type": "Offer",
           "price": "50",
@@ -194,7 +194,7 @@
         "@type": "Product",
         "name": "Taza Mágica Azul 11 oz",
         "image": "https://sublimacionalexandra.github.io/tazas/taza-magica-azul.jpg",
-        "description": "La imagen aparece al servir una bebida caliente. Taza mágica con su cajita 60 Bs, sin la cajita 50 Bs.",
+        "description": "La imagen aparece al servir una bebida caliente. Tu compra incluye diseño personalizado.",
         "offers": {
           "@type": "Offer",
           "price": "50",
@@ -264,11 +264,38 @@
 }
 </script>
 
+<script>
+  /* Evita que la barra de aviso aparezca si el usuario ya la cerró */
+  try {
+    var versionBarra = document.documentElement.getAttribute('data-barra') || 'v1';
+    if (window.localStorage.getItem('barraPromo:' + versionBarra) === '1') {
+      document.documentElement.classList.add('sin-barra');
+    }
+  } catch (error) {}
+</script>
+
 </head>
 
 <body>
 
 <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<!-- ============================ BARRA DE AVISO ============================ -->
+<div class="barra-promo" id="barraPromo" role="region" aria-label="Aviso destacado">
+
+  <p class="barra-texto">
+    <i class="fas fa-gift" aria-hidden="true"></i>
+    <span class="barra-fuerte">Tazas desde 30 Bs</span>
+    <span class="barra-suave">· Diseño personalizado incluido</span>
+  </p>
+
+  <a class="barra-boton" href="https://wa.me/59178448039?text=Hola%20Alexandra%2C%20quiero%20hacer%20un%20pedido%20personalizado.%20%C2%BFMe%20puedes%20ayudar%3F" target="_blank" rel="noopener">Pedir</a>
+
+  <button class="barra-cerrar" type="button" aria-label="Cerrar aviso">&times;</button>
+
+</div>
+
+
 
 <!-- ============================ HEADER ============================ -->
 <header>
@@ -433,7 +460,7 @@
         <div class="precio">30 Bs</div>
         <div class="botones">
           <button type="button" class="btn-ver">Ver detalles</button>
-          <a class="btn-comprar" href="https://wa.me/59178448039?text=Hola%20Alexandra%2C%20quiero%20la%20Taza%20Blanca%2011%20oz%20%2825%20Bs%29." target="_blank" rel="noopener">Pedir</a>
+          <a class="btn-comprar" href="https://wa.me/59178448039?text=Hola%20Alexandra%2C%20quiero%20la%20Taza%20Blanca%2011%20oz%20%2830%20Bs%29." target="_blank" rel="noopener">Pedir</a>
         </div>
       </div>
     </article>
@@ -443,7 +470,7 @@
            width="600" height="450" loading="lazy" decoding="async">
       <div class="card-info">
         <h3>Taza Mágica Roja 11 oz</h3>
-        <p>La imagen aparece al servir una bebida caliente. Tu compra incluye diseño personalizado</p>
+        <p>La imagen aparece al servir una bebida caliente. Tu compra incluye diseño personalizado.</p>
         <div class="precio">50 Bs</div>
         <p class="precio-nota"><i class="fas fa-gift" aria-hidden="true"></i> Taza + su cajita de regalo: 60 Bs</p>
         <div class="botones">
@@ -475,7 +502,7 @@
         <h3>Taza Mágica Azul 11 oz</h3>
         <p>La imagen aparece al servir una bebida caliente. Tu compra incluye diseño personalizado.</p>
         <div class="precio">50 Bs</div>
-        <p class="precio-nota"><i class="fas fa-gift" aria-hidden="true"></i> Taza  + su cajita de regalo: 60 Bs</p>
+        <p class="precio-nota"><i class="fas fa-gift" aria-hidden="true"></i> Taza + su cajita de regalo: 60 Bs</p>
         <div class="botones">
           <button type="button" class="btn-ver">Ver detalles</button>
           <a class="btn-comprar" href="https://wa.me/59178448039?text=Hola%20Alexandra%2C%20quiero%20la%20Taza%20M%C3%A1gica%20Azul%20(50%20Bs%20sin%20cajita%20%2F%2060%20Bs%20con%20cajita)." target="_blank" rel="noopener">Pedir</a>
@@ -1093,7 +1120,10 @@
   </div>
 </div>
 
-<!-- ============================ POPUP PROMO ============================ -->
+<!-- ===================== POPUP PROMO (desactivada) =====================
+     Para volver a mostrarla: en script.js cambia POPUP_ACTIVO = false por true.
+     Mientras esté apagada, la imagen promocional no se descarga.
+     ==================================================================== -->
 <div class="popup-promocion" id="popupPromocion" role="dialog" aria-modal="true" aria-label="Promoción gorra de aniversario" aria-hidden="true">
   <div class="popup-contenido">
     <button class="popup-cerrar" type="button" id="cerrarPopup" aria-label="Cerrar promoción">&times;</button>

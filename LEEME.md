@@ -218,3 +218,38 @@ edita el enlace `href` de esa tarjeta.
 
 > Recuerda: al cambiar el HTML/CSS/JS, sube la versión en `sw.js`
 > (`v2.1.1` → `v2.1.2`) para que los usuarios vean la actualización.
+
+---
+
+## 11. Barra de aviso superior (nueva)
+
+Aparece fija arriba, encima del menú, con el mensaje **"Tazas desde 30 Bs · Diseño
+personalizado incluido"** y un botón **Pedir** que abre WhatsApp.
+
+- Se puede **cerrar** con la × y no vuelve a salir en ese dispositivo.
+- Para cambiar el mensaje: en `index.html` busca `id="barraPromo"`. El texto está en
+  `<span class="barra-fuerte">` y `<span class="barra-suave">`.
+- **Para mostrarla de nuevo a todos** (por ejemplo con otra promo), cambia en la primera
+  línea del HTML:
+  `<html lang="es" data-barra="v1">` → `data-barra="v2"`.
+  Eso reinicia el aviso para todos los que lo habían cerrado.
+- Si el mensaje de la barra tiene que cambiar con la oferta, revisa también el botón
+  `barra-boton` (ahí va el enlace de WhatsApp).
+
+---
+
+## 12. Ventana emergente de promoción: desactivada
+
+El popup de la gorra de aniversario **ya no se muestra**. No se borró: está apagado con
+una sola línea para que puedas recuperarlo el próximo aniversario.
+
+En `script.js`, arriba del bloque del popup:
+
+```js
+var POPUP_ACTIVO = false;   // cámbialo a true para reactivarla
+```
+
+Mientras esté en `false`, la imagen `promocion-gorra-cuevo.jpg` **no se descarga**
+(sigue ocupando espacio en el repositorio, pero no pesa para el visitante).
+Si quieres cambiar la promoción, reemplaza esa imagen y actualiza el texto y el enlace
+dentro del bloque `POPUP PROMO` de `index.html`.

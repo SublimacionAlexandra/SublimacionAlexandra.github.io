@@ -93,6 +93,48 @@
   }
 
   /* ----------------------------------------------------------
+     Barra de aviso superior
+     Se recuerda la decisión; para volver a mostrarla a todos,
+     cambia data-barra="v1" por "v2" en la etiqueta <html>.
+     ---------------------------------------------------------- */
+
+  var barraPromo = $('#barraPromo');
+
+  if (barraPromo) {
+
+    var cerrarBarra = $('.barra-cerrar', barraPromo);
+    var versionBarra = document.documentElement.getAttribute('data-barra') || 'v1';
+    var CLAVE_BARRA = 'barraPromo:' + versionBarra;
+
+    try {
+      if (window.localStorage.getItem(CLAVE_BARRA) !== '1') {
+        document.documentElement.classList.remove('sin-barra');
+      }
+    } catch (error) {
+      /* sin almacenamiento: la barra se muestra siempre */
+    }
+
+    if (cerrarBarra) {
+      cerrarBarra.addEventListener('click', function () {
+
+        document.documentElement.classList.add('sin-barra');
+
+        try {
+          window.localStorage.setItem(CLAVE_BARRA, '1');
+        } catch (error) {
+          /* sin almacenamiento */
+        }
+
+        window.setTimeout(function () {
+          if (barraPromo.parentNode) {
+            barraPromo.parentNode.removeChild(barraPromo);
+          }
+        }, 200);
+      });
+    }
+  }
+
+  /* ----------------------------------------------------------
      Menú móvil
      ---------------------------------------------------------- */
 
@@ -550,13 +592,17 @@
 
   /* ----------------------------------------------------------
      Popup promocional
+     DESACTIVADA: pon POPUP_ACTIVO = true para volver a mostrarla
+     (por ejemplo, en el próximo aniversario de Cuevo).
      - La imagen no se descarga hasta que se muestra
      - Una sola vez por sesión
      ---------------------------------------------------------- */
 
+  var POPUP_ACTIVO = false;
+
   var popup = $('#popupPromocion');
 
-  if (popup) {
+  if (popup && POPUP_ACTIVO) {
 
     var cerrarPopupBoton = $('#cerrarPopup');
     var popupImagen = $('img', popup);

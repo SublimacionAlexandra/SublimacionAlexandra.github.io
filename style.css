@@ -23,6 +23,7 @@
 
   /* Estructura */
   --header-h:76px;
+  --barra-h:46px;
   --radio:18px;
   --radio-sm:12px;
   --sombra:0 10px 30px rgba(16,24,40,.08);
@@ -43,7 +44,7 @@
 
 html{
   scroll-behavior:smooth;
-  scroll-padding-top:calc(var(--header-h) + 20px);
+  scroll-padding-top:calc(var(--header-h) + var(--barra-h) + 20px);
   scrollbar-gutter:stable;
   -webkit-text-size-adjust:100%;
 }
@@ -112,7 +113,7 @@ p{
 
 header{
   position:fixed;
-  inset:0 0 auto 0;
+  inset:var(--barra-h) 0 auto 0;
   height:var(--header-h);
   display:flex;
   align-items:center;
@@ -232,7 +233,7 @@ nav a:hover::after{
 
 .banner{
   position:relative;
-  margin-top:var(--header-h);
+  margin-top:calc(var(--header-h) + var(--barra-h));
   height:clamp(470px,76vh,700px);
   overflow:hidden;
   background:var(--carbon);
@@ -1268,6 +1269,7 @@ section{
 
   :root{
     --header-h:64px;
+    --barra-h:44px;
   }
 
   .menu-toggle{
@@ -1284,7 +1286,7 @@ section{
 
   nav{
     position:fixed;
-    top:var(--header-h);
+    top:calc(var(--header-h) + var(--barra-h));
     left:0;
     right:0;
     flex-direction:column;
@@ -2172,4 +2174,142 @@ button,
 /* Imagen de producto aún no subida */
 img.img-pendiente{
   opacity:.9;
+}
+
+/* ============================================================
+   BARRA DE AVISO SUPERIOR
+   Para cambiar el mensaje: edita el HTML de #barraPromo
+   ============================================================ */
+
+.barra-promo{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1001;
+  height:var(--barra-h);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:0 clamp(12px,3vw,26px);
+  background:linear-gradient(90deg,var(--dorado) 0%,var(--dorado-oscuro) 100%);
+  color:#241c00;
+  box-shadow:0 2px 12px rgba(16,24,40,.14);
+}
+
+.barra-texto{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+  margin:0;
+  font-size:.86rem;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.barra-texto i{
+  font-size:.9rem;
+  flex-shrink:0;
+}
+
+.barra-fuerte{
+  font-weight:800;
+}
+
+.barra-suave{
+  font-weight:500;
+  opacity:.82;
+}
+
+.barra-boton{
+  margin-left:auto;
+  flex-shrink:0;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 16px;
+  border-radius:999px;
+  background:#241c00;
+  color:#f3d478;
+  font-size:.8rem;
+  font-weight:700;
+  text-decoration:none;
+  transition:background var(--transicion), transform var(--transicion);
+}
+
+.barra-boton:hover{
+  background:#000;
+  transform:translateY(-1px);
+}
+
+.barra-cerrar{
+  flex-shrink:0;
+  width:28px;
+  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.12);
+  color:#241c00;
+  font-size:1.1rem;
+  line-height:1;
+  cursor:pointer;
+  transition:background var(--transicion);
+}
+
+.barra-cerrar:hover{
+  background:rgba(0,0,0,.24);
+}
+
+/* Cerrada por el usuario: todo sube y se recupera el espacio */
+html.sin-barra{
+  --barra-h:0px;
+}
+
+html.sin-barra .barra-promo{
+  display:none;
+}
+
+@media (max-width:640px){
+
+  :root{
+    --barra-h:44px;
+  }
+
+  .barra-promo{
+    gap:10px;
+  }
+
+  .barra-suave{
+    display:none;
+  }
+
+  .barra-texto{
+    font-size:.8rem;
+  }
+
+  .barra-boton{
+    padding:5px 13px;
+    font-size:.75rem;
+  }
+
+  .barra-cerrar{
+    width:26px;
+    height:26px;
+    font-size:1rem;
+  }
+
+}
+
+@media print{
+
+  .barra-promo{
+    display:none !important;
+  }
+
 }

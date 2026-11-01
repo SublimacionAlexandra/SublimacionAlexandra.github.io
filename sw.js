@@ -6,7 +6,7 @@
    · CSS/JS      → sirve caché y actualiza en segundo plano
    ============================================================ */
 
-var VERSION = 'v2.1.1';
+var VERSION = 'v2.2.0';
 var CACHE_APP = 'alexandra-app-' + VERSION;
 var CACHE_IMG = 'alexandra-img-' + VERSION;
 var CACHE_EXT = 'alexandra-ext-' + VERSION;
