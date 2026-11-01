@@ -139,3 +139,82 @@ sigue siendo la más lenta.
 - **Dominio propio** (`sublimacionalexandra.com`) en lugar de `github.io`.
   Ojo: si cambias de dominio, actualiza `canonical`, `og:url`, `sitemap.xml`
   y las URLs de los datos estructurados.
+
+---
+
+## 8. Secciones nuevas (basadas en las referencias)
+
+Se agregaron tres bloques que tenían SubLab y Brildor y que a tu sitio le faltaban:
+
+| Sección | De dónde viene la idea | Para qué sirve |
+|---|---|---|
+| **Cómo comprar** (3 pasos) | SubLab "Tu diseño en tres pasos" | Quita el miedo de quien nunca pidió algo personalizado |
+| **Empresas y colegios** | SubLab Corp / AG Imagama merchandising | Abre el ticket alto: uniformes, promociones, kits |
+| **Preguntas frecuentes** | Brildor FAQ | Responde lo que más preguntan sin que escriban |
+
+El FAQ usa `<details>` nativo: se abre y cierra **sin JavaScript**, funciona con teclado
+y además está declarado en datos estructurados (`FAQPage`) para que Google lo muestre.
+
+### Cómo editar cada una
+
+- **Cómo comprar:** en `index.html` busca `id="como-comprar"`. Cada paso es un `<li class="paso">`.
+- **Empresas:** busca `id="empresas"`. Cambia las viñetas de beneficios y el texto.
+  El botón ya manda un mensaje de WhatsApp distinto: *"quiero cotizar un pedido por mayor"*.
+- **Preguntas:** busca `id="preguntas"`. Cada pregunta es un `<details class="faq-item">`.
+  Si cambias una pregunta, **cambia también** su copia en el bloque `FAQPage` del `<head>`
+  (Google exige que el texto coincida con lo visible).
+
+---
+
+## 9. La mejora pendiente más importante: precios "Desde Bs"
+
+En las referencias, **todos** muestran precio de entrada: SubLab pone "Taza cilíndrica 11 oz
+Desde Bs 20", "Polera blanca Desde Bs 50". Tu sitio dice "Precio a consultar" en 12 de
+16 productos, y eso baja los mensajes porque muchos no escriben si no saben el rango.
+
+Cuando tengas tus precios, cambia:
+
+```html
+<div class="precio consultar">Precio a consultar</div>
+```
+
+por:
+
+```html
+<div class="precio">Desde 45 Bs</div>
+```
+
+No hace falta que sea el precio final: "Desde" ya filtra curiosos y sube la calidad
+de los mensajes.
+
+---
+
+## 10. Tazas mágicas (roja, negra y azul)
+
+Se agregaron **dos tarjetas nuevas** debajo de la taza mágica existente, para la negra y
+la azul. Mientras no subas las fotos, esas dos tarjetas muestran un recuadro
+**"Foto pendiente"** (no un ícono roto). Para completarlas, sube a la carpeta `tazas/`:
+
+| Archivo exacto | Producto |
+|---|---|
+| `tazas/taza-magica-negra.jpg` | Taza Mágica Negra 11 oz |
+| `tazas/taza-magica-azul.jpg` | Taza Mágica Azul 11 oz |
+
+`tazas/taza2.jpg` quedó como la **taza mágica roja**.
+
+### Precios de las tres tazas mágicas
+
+- **50 Bs** sin la cajita
+- **60 Bs** con su cajita de regalo
+
+Eso aparece de dos formas en cada tarjeta:
+1. En la descripción: *"Taza mágica con su cajita 60 Bs, sin la cajita 50 Bs."*
+2. Debajo del precio, en dorado: *"Con su cajita de regalo: 60 Bs"*.
+
+Para cambiar el precio, en `index.html` busca `Taza Mágica Roja`, `... Negra` o `... Azul`:
+el precio principal está en `<div class="precio">50 Bs</div>` y la nota en
+`<p class="precio-nota">`. El mensaje de WhatsApp también incluye el precio: si lo cambias,
+edita el enlace `href` de esa tarjeta.
+
+> Recuerda: al cambiar el HTML/CSS/JS, sube la versión en `sw.js`
+> (`v2.1.1` → `v2.1.2`) para que los usuarios vean la actualización.

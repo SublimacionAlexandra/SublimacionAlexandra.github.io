@@ -340,6 +340,7 @@
     var modalTitulo = $('#modalTitulo');
     var modalDescripcion = $('#modalDescripcion');
     var modalPrecio = $('#modalPrecio');
+    var modalPrecioNota = $('#modalPrecioNota');
     var modalWhatsapp = $('#modalWhatsapp');
     var modalCategoria = $('#modalCategoria');
     var modalCompartir = $('#modalCompartir');
@@ -391,6 +392,19 @@
           'consultar',
           !!(precio && precio.classList.contains('consultar'))
         );
+      }
+
+      /* Nota extra del precio (por ejemplo "con su cajita: 60 Bs") */
+      if (modalPrecioNota) {
+        var notaPrecio = $('.precio-nota', tarjeta);
+
+        if (notaPrecio) {
+          modalPrecioNota.innerHTML = notaPrecio.innerHTML;
+          modalPrecioNota.hidden = false;
+        } else {
+          modalPrecioNota.innerHTML = '';
+          modalPrecioNota.hidden = true;
+        }
       }
 
       if (modalWhatsapp && enlaceCompra) {
@@ -754,6 +768,45 @@
       });
     });
   }
+
+  /* ----------------------------------------------------------
+     Imágenes de producto que todavía no se subieron
+     Muestra un recuadro "Foto pendiente" en lugar del ícono roto
+     ---------------------------------------------------------- */
+
+  var SVG_PENDIENTE = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img">' +
+      '<rect width="400" height="300" fill="#f6f5f2"/>' +
+      '<rect x="10" y="10" width="380" height="280" rx="16" fill="none" ' +
+        'stroke="#D4AF37" stroke-width="2" stroke-dasharray="9 7" opacity="0.75"/>' +
+      '<g fill="none" stroke="#c9a63a" stroke-width="5" stroke-linecap="round">' +
+        '<path d="M150 118h88v64a30 30 0 0 1-30 30h-28a30 30 0 0 1-30-30z"/>' +
+        '<path d="M238 132h16a19 19 0 0 1 0 38h-16"/>' +
+      '</g>' +
+      '<text x="200" y="262" text-anchor="middle" ' +
+        'font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="16" ' +
+        'font-weight="600" fill="#8b93a0">Foto pendiente</text>' +
+    '</svg>'
+  );
+
+  $$('img[data-pendiente]').forEach(function (imagen) {
+
+    var mostrarPendiente = function () {
+      if (imagen.getAttribute('data-pendiente-lista') === '1') {
+        return;
+      }
+      imagen.setAttribute('data-pendiente-lista', '1');
+      imagen.src = SVG_PENDIENTE;
+      imagen.classList.add('img-pendiente');
+    };
+
+    imagen.addEventListener('error', mostrarPendiente, { once: true });
+
+    /* Si el error ocurrió antes de cargar este script */
+    if (imagen.complete && imagen.naturalWidth === 0) {
+      mostrarPendiente();
+    }
+  });
 
   /* ----------------------------------------------------------
      Año del pie de página
